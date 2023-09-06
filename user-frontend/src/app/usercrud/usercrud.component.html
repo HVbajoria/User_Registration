@@ -1,0 +1,80 @@
+<div class="container mt-5">
+    <div class="card">
+        <h1> User Registration</h1>
+        
+<form>
+    <div class="form-group mt-2">
+      <label>Name</label>
+      <input type="text" [(ngModel)]="name" [ngModelOptions]="{standalone: true}" class="form-control" id="Name" aria-describedby="nameHelp" placeholder="Enter name">
+    </div>
+
+    <div class="form-group mt-3">
+      <label>Phone Number</label>
+      <input type="number"  [(ngModel)]="phone" [ngModelOptions]="{standalone: true}" class="form-control" id="phone" placeholder="Enter Phone Number (10-digit number)">
+    </div>
+
+    <div class="form-group mt-3">
+        <label>Email Address</label>
+        <input type="email"  [(ngModel)]="email" [ngModelOptions]="{standalone: true}"  class="form-control" id="Email" aria-describedby="emailHelp" placeholder="Enter email">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+
+    <div class="form-group mt-3">
+        <label>Date of Birth</label>
+        <input type="date"  [(ngModel)]="dob" [ngModelOptions]="{standalone: true}" class="form-control" id="dob" placeholder="Enter Date of Birth">
+    </div>
+
+    <div class="form-group mt-3">
+        <label>College Name</label>
+        <input type="text"  [(ngModel)]="college" [ngModelOptions]="{standalone: true}" class="form-control" id="college" placeholder="Enter College Name">
+    </div>
+
+    <div class="form-group mt-3">
+        <label>Graduation Year</label>
+        <input type="number"  [(ngModel)]="graduation" [ngModelOptions]="{standalone: true}" class="form-control" id="graduation" placeholder="Enter Graduation Year">
+    </div>
+
+    <div class="form-check mt-3">
+      <input type="checkbox"  [(ngModel)]="agreed" [ngModelOptions]="{standalone: true}" class="form-check-input" id="terms">
+      <label class="form-check-label">Agree to Terms & Conditions</label>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-3" (click)="save()">Submit</button>
+  </form>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <h1>User Details</h1>
+
+    <table class="table table-striped">
+        <thead>
+            <h1 *ngIf="!isResultloaded">Loading .......</h1>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Phone Number</th>
+                <th>Email Address</th>
+                <th>Date of Birth</th>
+                <th>College Name</th>
+                <th>Graduation Year</th>
+                <th>Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let UserItem of UserArray">
+                <td>{{UserItem.id}}</td>
+                <td>{{UserItem.name}}</td>
+                <td>{{UserItem.phone_number}}</td>
+                <td>{{UserItem.email}}</td>
+                <td>{{UserItem.dob}}</td>
+                <td>{{UserItem.college_name}}</td>
+                <td>{{UserItem.graduation_year}}</td>
+                <td>
+                    <button class="btn btn-primary" (click)="editUser(UserItem)">Edit</button>
+                    <button class="btn btn-danger" (click)="deleteUser(UserItem.id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
